@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/_head.ejs') %>
+<body>
+<%- include('partials/_header.ejs') %>
+  <div class="container mt-5">
+    <h2>Interview Management</h2>
+    <!-- Link to the new interview creation page -->
+    <a href="/interviews/create" class="btn btn-success mb-3">Create New Interview</a>
+
+    <ul class="list-group">
+      <% interviews.forEach(function(interview) { %>
+        <li class="list-group-item">
+          <strong><%= interview.name %></strong>
+          <ul>
+            <% interview.questions.forEach(function(question, index){ %>
+              <li>
+                <strong>Question:</strong> <%= question %><br>
+                <strong>Ideal Answer:</strong> <%= interview.idealAnswers[index] %>
+              </li>
+            <% }); %>
+          </ul>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
+<%- include('partials/_footer.ejs') %>
+</body>
+</html>
